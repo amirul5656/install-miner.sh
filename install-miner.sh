@@ -3,12 +3,16 @@
 echo "📦 Menginstal dependensi..."
 apt-get update && apt-get install -y screen wget tar
 
-echo "📁 Menyimpan skrip mining..."
+echo "📁 Menyimpan skrip mining ke /root/start-miner.sh..."
 cat << 'EOF' > /root/start-miner.sh
 #!/bin/bash
 cd /root || exit
 
-# Buat sesi screen otomatis dan jalankan mining
+# Hapus folder lama jika ada
+rm -rf SRBMiner-Multi-2-8-7
+rm -f SRBMiner-Multi-2-8-7-Linux.tar.gz
+
+# Buat sesi screen dan jalankan mining
 screen -dmS amirul3 bash -c '
   wget https://github.com/doktor83/SRBMiner-Multi/releases/download/2.8.7/SRBMiner-Multi-2-8-7-Linux.tar.gz  
   sleep 10
@@ -23,10 +27,10 @@ EOF
 
 chmod +x /root/start-miner.sh
 
-echo "📝 Menambahkan ke crontab @reboot..."
+echo "📝 Menambahkan ke crontab agar auto-jalan setelah reboot..."
 (crontab -l 2>/dev/null; echo "@reboot /root/start-miner.sh") | crontab -
 
 echo "🚀 Menjalankan mining sekarang..."
 /root/start-miner.sh
 
-echo "✅ Instalasi selesai. Mining akan otomatis jalan setelah reboot!"
+echo "✅ Instalasi selesai! Mining akan otomatis jalan setiap reboot."
