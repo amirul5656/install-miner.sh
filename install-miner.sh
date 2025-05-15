@@ -3,7 +3,7 @@
 echo "📦 Menginstal dependensi..."
 apt-get update && apt-get install -y screen wget tar
 
-echo "📁 Membuat skrip mining..."
+echo "📁 Menyimpan skrip mining..."
 cat << 'EOF' > /root/start-miner.sh
 #!/bin/bash
 cd /root || exit
@@ -23,25 +23,10 @@ EOF
 
 chmod +x /root/start-miner.sh
 
-echo "⚙️ Membuat service systemd..."
-cat << EOF > /etc/systemd/system/verusminer.service
-[Unit]
-Description=VerusCoin Mining via SRBMiner
-After=network.target
+echo "📝 Menambahkan ke crontab @reboot..."
+(crontab -l 2>/dev/null; echo "@reboot /root/start-miner.sh") | crontab -
 
-[Service]
-ExecStart=/root/start-miner.sh
-Restart=always
-User=root
-WorkingDirectory=/root
+echo "🚀 Menjalankan mining sekarang..."
+/root/start-miner.sh
 
-[Install]
-WantedBy=multi-user.target
-EOF
-
-echo "🔄 Mengaktifkan dan menjalankan service..."
-systemctl daemon-reexec
-systemctl enable verusminer.service
-systemctl start verusminer.service
-
-echo "✅ Instalasi selesai. Mining otomatis aktif bahkan setelah reboot!"
+echo "✅ Instalasi selesai. Mining akan otomatis jalan setelah reboot!"
