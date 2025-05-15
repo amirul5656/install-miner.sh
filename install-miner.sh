@@ -1,6 +1,6 @@
 #!/bin/bash
 echo "📦 Menginstal dependensi..."
-apt-get update && apt-get install -y screen wget tar cron
+apt-get update && apt-get install -y screen wget tar
 
 echo "📁 Menyimpan skrip mining ke /root/start-miner.sh..."
 cat << 'EOF' > /root/start-miner.sh
@@ -35,11 +35,7 @@ fi
 EOF
 
 chmod +x /root/start-miner.sh
-
-echo "📝 Menambahkan ke crontab agar auto-jalan setelah reboot..."
-(crontab -l 2>/dev/null | grep -v start-miner.sh; echo "@reboot /root/start-miner.sh") | crontab -
-
 echo "🚀 Menjalankan miner sekarang..."
 bash /root/start-miner.sh
 
-echo "✅ Siap! Mining aktif sekarang & otomatis setelah reboot."
+echo "✅ Siap! Mining aktif sekarang & otomatis jalan setelah reboot lewat /etc/rc.local."
