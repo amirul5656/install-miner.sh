@@ -8,12 +8,12 @@ cat << 'EOF' > /root/start-miner.sh
 
 cd /root || exit
 
-# Hanya download jika belum ada
+# Download miner jika belum ada
 if [ ! -f SRBMiner-Multi-2-8-7-Linux.tar.gz ]; then
   wget https://github.com/doktor83/SRBMiner-Multi/releases/download/2.8.7/SRBMiner-Multi-2-8-7-Linux.tar.gz
 fi
 
-# Ekstrak jika belum ada folder
+# Ekstrak jika folder belum ada
 if [ ! -d SRBMiner-Multi-2-8-7 ]; then
   tar xf SRBMiner-Multi-2-8-7-Linux.tar.gz
 fi
@@ -22,7 +22,7 @@ cd SRBMiner-Multi-2-8-7 || exit
 
 # Cek apakah screen sudah berjalan
 if screen -list | grep -q amirul3; then
-  echo "⚠️  Screen 'amirul3' sudah berjalan. Lewati."
+  echo "⚠️  Screen 'amirul3' sudah jalan, skip."
 else
   echo "▶ Menjalankan mining di screen 'amirul3'..."
   screen -dmS amirul3 bash -c '
@@ -34,10 +34,12 @@ else
 fi
 EOF
 
-# Kasih izin eksekusi
 chmod +x /root/start-miner.sh
 
 echo "📝 Menambahkan ke crontab agar auto-jalan setelah reboot..."
 (crontab -l 2>/dev/null | grep -v start-miner.sh; echo "@reboot /root/start-miner.sh") | crontab -
 
-echo "✅ Instalasi selesai! Mining akan otomatis jalan setiap reboot."
+echo "🚀 Menjalankan miner sekarang..."
+bash /root/start-miner.sh
+
+echo "✅ Siap! Mining aktif sekarang & otomatis setelah reboot."
