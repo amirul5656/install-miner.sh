@@ -1,7 +1,7 @@
 #!/bin/bash
 
 echo "📦 Menginstal dependensi..."
-apt-get update && apt-get install -y screen wget tar
+apt-get update && apt-get install -y screen wget tar cron
 
 echo "📁 Menyimpan skrip mining ke /root/start-miner.sh..."
 cat << 'EOF' > /root/start-miner.sh
