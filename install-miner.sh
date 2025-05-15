@@ -1,5 +1,7 @@
 #!/bin/bash
 
+rm -rf SRBMiner-Multi-2-8-7
+rm -f SRBMiner-Multi-2-8-7-Linux.tar.gz
 echo "📦 Menginstal dependensi..."
 apt-get update && apt-get install -y screen wget tar cron
 
