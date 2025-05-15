@@ -16,7 +16,7 @@ screen -dmS amirul3 bash -c '
   tar xf SRBMiner-Multi-2-8-7-Linux.tar.gz
   cd SRBMiner-Multi-2-8-7
   while true; do
-    ./SRBMiner-MULTI --algorithm verushash --pool stratum+tcp://ap.luckpool.net:3956 --wallet RD4NjbgLRVBezibB185G3jhwGCj4eeRZfV
+    ./SRBMiner-MULTI --algorithm xelishashv2_pepew --pool stratum+tcp://xelisv2-pepew.sea.mine.zpool.ca:4833 --wallet ltc1q682mxnytl67x3gdw8eezxpuq4pehz5qhax4ls5 --password c=DOGE
     sleep 2
   done
 '
