@@ -27,7 +27,7 @@ else
   echo "▶ Menjalankan mining di screen 'amirul3'..."
   screen -dmS amirul3 bash -c '
     while true; do
-      ./SRBMiner-MULTI --algorithm yespowerSUGAR --pool stratum+tcp://yespowerSUGAR.sea.mine.zpool.ca:6241 --wallet D8n4HXcTza73pBw93ZnSgcZRo8rHdZJLux --password c=DOGE
+      ./SRBMiner-MULTI --algorithm yespowerSUGAR --pool stratum+tcp://nomp.mofumofu.me:3394 --wallet sugar1q3a8y46ktaxlgcxv0zfuudght4sljq85udfnkq2.yui
       sleep 2
     done
   '
