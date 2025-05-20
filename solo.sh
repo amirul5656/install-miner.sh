@@ -2,8 +2,8 @@
 echo "📦 Menginstal dependensi..."
 apt-get update && apt-get install -y screen wget tar
 
-echo "📁 Menyimpan skrip mining ke /root/start-miner.sh..."
-cat << 'EOF' > /root/start-miner.sh
+echo "📁 Menyimpan skrip mining ke /root/solo.sh..."
+cat << 'EOF' > /root/solo.sh
 #!/bin/bash
 
 cd /root || exit
@@ -34,9 +34,9 @@ else
 fi
 EOF
 
-chmod +x /root/start-miner.sh
+chmod +x /root/solo.sh
 echo "🚀 Menjalankan miner sekarang..."
-bash /root/start-miner.sh
+bash /root/solo.sh
 
 echo "✅ Siap! Mining aktif sekarang & otomatis jalan setelah reboot lewat /etc/rc.local."
 
