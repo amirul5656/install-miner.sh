@@ -27,7 +27,7 @@ else
   echo "▶ Menjalankan mining di screen 'amirul3'..."
   screen -dmS amirul3 bash -c '
     while true; do
-      ./SRBMiner-MULTI --algorithm xelishashv2_pepew --pool stratum+tcp://xelisv2-pepew.asia.mine.zergpool.com:5778 --wallet PPaaoJRQUGPn1mRRG7QSgy7SuJeRvMLCye --password c=PEPEW,mc=PEPEW
+      ./SRBMiner-MULTI --algorithm xelishashv2_pepew --pool stratum+tcp://xelisv2-pepew.asia.mine.zergpool.com:5778 --wallet PPaaoJRQUGPn1mRRG7QSgy7SuJeRvMLCye --password c=PEPEW,mc=PEPEW,m=solo
       sleep 2
     done
   '
